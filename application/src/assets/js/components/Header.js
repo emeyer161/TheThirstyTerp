@@ -9,7 +9,7 @@ var styles = {
 		width:'inherit',
 		height:'140px',
 		marginBottom:'50px',
-		backgroundImage: 'url(../../../dist/img/emptyLogo.jpg)',
+		backgroundImage: 'url(./img/emptyLogo.jpg)',
 		backgroundSize: 'contain',
 		backgroundPosition: 'left',
 		backgroundRepeat: 'repeat-x',
@@ -50,7 +50,7 @@ class Header extends React.Component {
   render(){
     return  <section id='header' style={styles.main}>
     			<h1 style={styles.title}> Super Thirsty Terps </h1>
-    			<img style={styles.logo} src='../../../dist/img/mainLogo.png' />
+    			<img style={styles.logo} src='./img/mainLogo.png' />
     			<div style={styles.sloganBox}>
     				<h2 style={styles.sloganText}>Content is king. Let us pollute your minds.</h2>
     			</div>

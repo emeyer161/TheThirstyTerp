@@ -12,7 +12,7 @@ gulp.task('browserify', function () {		// browserify should have a .babelrc type
         .transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
         .on("error", function (err) { console.log("Error: " + err.message); })
-        .pipe(source('../../public_html/dist/js/application.min.js')) //'application.' + Date.now() + '.min.js'
+        .pipe(source('../../public_html/js/application.js')) //'application.' + Date.now() + '.min.js'
         .pipe(gulp.dest('dist'));
 });
 

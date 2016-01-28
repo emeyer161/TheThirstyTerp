@@ -49,7 +49,7 @@ class StubArticle extends React.Component {
         return  <div className='StubArticle' style={styles.main}>
                     <a href={'/#/blog/'+this.props.post.ID}>
                         <div id="imgContainer" style={styles.imgContainer}>
-                            <img src={'../../../dist/img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
+                            <img src={'./img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
                         </div>
                         <div id='textContainer' style={styles.textContainer}>
                             <h1 style={styles.title}>{this.props.post.title}</h1>

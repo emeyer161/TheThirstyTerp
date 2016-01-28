@@ -39,7 +39,7 @@ class FullArticle extends React.Component {
                     <header id='articleHeader' style={styles.header}>
                         <h1 style={styles.title}>{this.props.post.title}</h1>
                         <div id="imgContainer" style={styles.imgContainer}>
-                            <img src={'../../../dist/img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
+                            <img src={'./img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
                         </div>
                         <h2 style={styles.meta}>{this.props.post.user_id}  |  {this.props.post.created_at}</h2>
                     </header>
@@ -49,3 +49,5 @@ class FullArticle extends React.Component {
 }
 
 export default FullArticle;
+
+// ../../../dist/img/contentImages/

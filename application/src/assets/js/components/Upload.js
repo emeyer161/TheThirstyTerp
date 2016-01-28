@@ -33,7 +33,7 @@ var styles = {
 class Upload extends React.Component {
   render(){
     return  <section id='Upload' style={styles.main}>
-			    <form action="http://thethirstyterp.com/posts" method="POST">
+			    <form action="posts" method="POST">
             		<h3>Title:</h3>
             	        <input type="text" name='title' style={styles.input} />
             	    <h3>Body:</h3>

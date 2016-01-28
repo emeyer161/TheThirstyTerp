@@ -4,7 +4,7 @@ import PostStore from '../stores/PostStore';
 
 export function getById(id){
     console.log(PostStore);
-    var url = 'http://thethirstyterp.com/posts/' + id;
+    var url = '/posts/' + id;
     
     $.getJSON(url, function(result){
         console.log('AJAX request: #',id);
