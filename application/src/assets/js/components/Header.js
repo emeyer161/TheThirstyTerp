@@ -49,7 +49,7 @@ var styles = {
 class Header extends React.Component {
   render(){
     return  <section id='header' style={styles.main}>
-    			<h1 style={styles.title}> Suuuper Thirsty Terps </h1>
+    			<h1 style={styles.title}> Terribly Thirsty Terps </h1>
     			<img style={styles.logo} src='./img/mainLogo.png' />
     			<div style={styles.sloganBox}>
     				<h2 style={styles.sloganText}>Content is king. Let us pollute your minds.</h2>
