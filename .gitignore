@@ -5,7 +5,3 @@
 !.gitignore
 !application
 !public_html
-# etc...
-
-# ...even if they are in subdirectories
-!*/
