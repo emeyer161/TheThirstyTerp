@@ -1,9 +1,8 @@
 import React from 'react';
 
 let styles = {
-	videoContent: {
-		width: '80%',
-		float: 'left'
+	main: {
+	    
 	}
 }
 

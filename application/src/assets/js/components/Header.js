@@ -19,8 +19,8 @@ var styles = {
 		position: 'relative',
 	    display: 'block',
 	    margin: 'auto',
-	    height: '80%',
-	    top: '10%'
+	    height: '110px',
+	    top: '15px'
 	},
 	title: {
 		position: 'absolute',
@@ -49,8 +49,10 @@ var styles = {
 class Header extends React.Component {
   render(){
     return  <section id='header' style={styles.main}>
-    			<h1 style={styles.title}> Terribly Thirsty Terps </h1>
+    			<a href='/#/'>
+    			<h1 style={styles.title}>The Thirsty Terps</h1>
     			<img style={styles.logo} src='./img/mainLogo.png' />
+    			</a>
     			<div style={styles.sloganBox}>
     				<h2 style={styles.sloganText}>Content is king. Let us pollute your minds.</h2>
     			</div>

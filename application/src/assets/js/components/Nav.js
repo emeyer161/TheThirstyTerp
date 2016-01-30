@@ -34,7 +34,7 @@ let styles = {
 	},
 	navItem: {
 		display: 'inline-block',
-		width: '100px',
+		width: '90px',
 		padding: '14px 10px',
 		textAlign: 'center'
 	},
@@ -96,7 +96,7 @@ class Nav extends React.Component {
 						<li style={styles.navItem}><a href='/#' key='1' style={styles.navItemLink}> Home </a></li>
 
 						<li style={styles.navItem} onMouseOver={function(){this._mouseOver(2)}.bind(this)} onMouseLeave={function(){this._mouseOver(0)}.bind(this)}>
-							<a href='/#/blog' key='2' style={styles.navItemLink}> Blog </a>
+							<a href='/#/news' key='2' style={styles.navItemLink}> News </a>
 							<ul style={[styles.navSubList, (this.state.hover==2) && styles.show]}>
 								<li style={styles.navSubItem}><a href='' key='21' style={styles.navItemLink}>Latest</a></li>
 								<li style={styles.navSubItem}><a href='' key='22' style={styles.navItemLink}>Most Viewed</a></li>
@@ -105,14 +105,24 @@ class Nav extends React.Component {
 						</li>
 
 						<li style={styles.navItem} onMouseOver={function(){this._mouseOver(3)}.bind(this)} onMouseLeave={function(){this._mouseOver(0)}.bind(this)}>
-							<a href='' key='3' style={styles.navItemLink}> Vidcasts </a>
+							<a href='/#/sports' key='3' style={styles.navItemLink}> Sports </a>
 							<ul style={[styles.navSubList, (this.state.hover==3) && styles.show]}>
-								<li style={styles.navSubItem}><a href='' key='31' style={styles.navItemLink}>Norwich Family Podcast</a></li>
-								<li style={styles.navSubItem}><a href='' key='32' style={styles.navItemLink}>NFL Pick Em</a></li>
+								<li style={styles.navSubItem}><a href='' key='31' style={styles.navItemLink}>Football</a></li>
+								<li style={styles.navSubItem}><a href='' key='32' style={styles.navItemLink}>Basketball</a></li>
+								<li style={styles.navSubItem}><a href='' key='33' style={styles.navItemLink}>Other</a></li>
 							</ul>
 						</li>
 
-						<li style={styles.navItem}><a href='' key='4' style={styles.navItemLink}> CoolThing </a></li>
+						<li style={styles.navItem} onMouseOver={function(){this._mouseOver(4)}.bind(this)} onMouseLeave={function(){this._mouseOver(0)}.bind(this)}>
+							<a href='/#/videos' key='4' style={styles.navItemLink}> Videos </a>
+							<ul style={[styles.navSubList, (this.state.hover==4) && styles.show]}>
+								<li style={styles.navSubItem}><a href='' key='41' style={styles.navItemLink}>Norwich Family Podcast</a></li>
+								<li style={styles.navSubItem}><a href='' key='42' style={styles.navItemLink}>NFL Pick Em</a></li>
+							</ul>
+						</li>
+						
+						<li style={styles.navItem}><a href='/#/about' key='5' style={styles.navItemLink}> About Us </a></li>
+						
 					</ul>
 					<SearchBar placeholder={'Search the Site'} onSubmit={this._handleSubmit.bind(this)} />
 				</div>;
