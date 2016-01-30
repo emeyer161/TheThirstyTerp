@@ -60,8 +60,8 @@ ReactDOM.render((
             <Route path="about" component={About}/>
             
             <Route path="blog" component={Blog}>
-                <Route path=":postId" component={PostContainer}/>
                 <Route path="upload" component={Upload}/>
+                <Route path=":postId" component={PostContainer}/>
             </Route>
             
         </Route>
