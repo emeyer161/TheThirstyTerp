@@ -5,6 +5,7 @@ import Nav from '../components/Nav';
 
 var styles = {
 	main: {
+		zIndex:'100',
 		position:'relative',
 		width:'inherit',
 		height:'140px',

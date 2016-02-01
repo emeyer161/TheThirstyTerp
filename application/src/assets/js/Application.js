@@ -23,7 +23,7 @@ var styles = {
         backgroundColor: 'white'
     },
     allContent: {
-        width: '70%',
+        width: '68%',
         margin: '20px 0',
         display: 'inline-block',
         float:'left',
@@ -59,7 +59,7 @@ ReactDOM.render((
             <Route path="news" component={News}/>
             <Route path="about" component={About}/>
             
-            <Route path="blog" component={Blog}>
+            <Route path="posts" component={Blog}>
                 <Route path="upload" component={Upload}/>
                 <Route path=":postId" component={PostContainer}/>
             </Route>

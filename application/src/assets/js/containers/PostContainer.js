@@ -41,7 +41,7 @@ class PostContainer extends React.Component {
     }
   
     render(){
-        return  <section id='BlogPost' style={styles.main}>
+        return  <section id='postContainer' style={styles.main}>
     		        <FullArticle post={this.state.post} />
                 </section>;
     }

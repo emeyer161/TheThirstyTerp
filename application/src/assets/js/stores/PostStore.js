@@ -25,7 +25,9 @@ class PostStore extends BaseStore {
 				// console.log('Post Retrieved from Dispatcher: ', action.posts);
 				
 				for(var i=0; i<action.posts.length; i++){
-					this._posts.push(action.posts[i]);
+					if( !_.find( this._posts, function(p) { return p.ID == action.posts[i].ID; }) ){
+						this._posts.push(action.posts[i]);	
+					}
 				}
 				this._sortPosts();
 				
@@ -54,14 +56,17 @@ class PostStore extends BaseStore {
 	}
 
 	getPostById(id){
-		var post;
+		var post = _.find(this._posts, function(p) { return p.ID ==id; });
+		
+		// var post;
         
         // Look for post in storage
-		for(var i=0; i < this._posts.length; i++){
-			if(this._posts[i].ID == id){
-				post = this._posts[i];
-			}
-		}
+		// for(var i=0; i < this._posts.length; i++){
+		// 	if(this._posts[i].ID == id){
+		// 		post = this._posts[i];
+		// 	}
+		// }
+		
 
 		if(post){   // If post is stored
 			return post;
@@ -83,6 +88,7 @@ class PostStore extends BaseStore {
 	_sortPosts(){
 		// this.state._posts
 		// _. USE LODASH to compare and sort this stuff.
+		this._posts = _.sortBy(this._posts, 'ID');
 	}
 	
 	_addPosts(){

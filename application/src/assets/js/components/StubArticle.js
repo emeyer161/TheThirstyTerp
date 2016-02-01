@@ -47,7 +47,7 @@ var styles = {
 class StubArticle extends React.Component {
     render(){
         return  <div className='StubArticle' style={styles.main}>
-                    <a href={'/#/blog/'+this.props.post.ID}>
+                    <a href={'/#/posts/'+this.props.post.ID}>
                         <div id="imgContainer" style={styles.imgContainer}>
                             <img src={'./img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
                         </div>
