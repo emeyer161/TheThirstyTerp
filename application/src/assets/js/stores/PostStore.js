@@ -88,7 +88,7 @@ class PostStore extends BaseStore {
 	_sortPosts(){
 		// this.state._posts
 		// _. USE LODASH to compare and sort this stuff.
-		this._posts = _.sortBy(this._posts, 'ID');
+		this._posts = _.orderBy(this._posts, 'ID');
 		console.log('New Order: ', this._posts);
 	}
 	
