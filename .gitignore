@@ -3,8 +3,5 @@
 
 # But not these files...
 !.gitignore
-!application
-!application/*
-!application/*/*/*/*
-!public_html
-!public_html/*
+!/application/
+!/public_html/
