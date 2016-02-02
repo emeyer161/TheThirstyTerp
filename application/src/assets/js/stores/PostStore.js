@@ -1,5 +1,5 @@
 import BaseStore from './BaseStore';
-import { getById } from '../actions/PostActions';
+import { getBySlug } from '../actions/PostActions';
 import { getFirstPage } from '../actions/PostActions';
 import _ from 'lodash';
 
@@ -25,7 +25,7 @@ class PostStore extends BaseStore {
 				// console.log('Post Retrieved from Dispatcher: ', action.posts);
 				
 				for(var i=0; i<action.posts.length; i++){
-					if( !_.find( this._posts, function(p) { return p.ID == action.posts[i].ID; }) ){
+					if( !_.find( this._posts, function(p) { return p.id == action.posts[i].id; }) ){
 						this._posts.push(action.posts[i]);	
 					}
 				}
@@ -55,8 +55,30 @@ class PostStore extends BaseStore {
 		return this._posts;
 	}
 
+	getPostBySlug(slug){
+		var post = _.find(this._posts, function(p) { return p.slug == slug; });
+		
+		// var post;
+        
+        // Look for post in storage
+		// for(var i=0; i < this._posts.length; i++){
+		// 	if(this._posts[i].ID == id){
+		// 		post = this._posts[i];
+		// 	}
+		// }
+		
+
+		if(post){   // If post is stored
+			return post;
+		}
+		else {      // If post isn't stored
+			getBySlug(slug);
+			return {};
+		}
+	}
+	
 	getPostById(id){
-		var post = _.find(this._posts, function(p) { return p.ID ==id; });
+		var post = _.find(this._posts, function(p) { return p.id ==id; });
 		
 		// var post;
         
@@ -88,7 +110,7 @@ class PostStore extends BaseStore {
 	_sortPosts(){
 		// this.state._posts
 		// _. USE LODASH to compare and sort this stuff.
-		this._posts = _.orderBy(this._posts, 'ID');
+		this._posts = _.orderBy(this._posts, 'id');
 		console.log('New Order: ', this._posts);
 	}
 	

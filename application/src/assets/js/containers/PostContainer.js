@@ -31,12 +31,12 @@ class PostContainer extends React.Component {
     }
     
     componentWillReceiveProps(nextProps){ 
-        this._getPost(nextProps.params.postId);
+        this._getPost(nextProps.params.postSlug);
     }
     
-    _getPost(id){
+    _getPost(slug){
         this.setState({
-            post: PostStore.getPostById( id ? id : this.props.params.postId )
+            post: PostStore.getPostBySlug( slug ? slug : this.props.params.postSlug )
         });
     }
   

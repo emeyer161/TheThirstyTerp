@@ -4,6 +4,7 @@ use EricMeyer\Http\Requests;
 use EricMeyer\Http\Controllers\Controller;
 use EricMeyer\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -27,6 +28,8 @@ class PostsController extends Controller
     {
         $data = $request->all(); //aka req.body
         
+        $data['slug'] = Str::slug($data['title']);
+        
         $newPost = Post::create($data);
         
         return $newPost;
@@ -40,7 +43,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return Post::find($id);
+        // return Post::find($id);
+        return Post::where('slug',$id)->first();
     }
 
     /**
@@ -56,8 +60,8 @@ class PostsController extends Controller
         $post = Post::find($id);
         
         $post->fill( $request->all() );
+        $post->slug = Str::slug($post->title);
         $post->save();
-        $post->push();
         
         return $post;
     }

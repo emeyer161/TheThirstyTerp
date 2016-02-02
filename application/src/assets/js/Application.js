@@ -61,7 +61,7 @@ ReactDOM.render((
             
             <Route path="posts" component={Blog}>
                 <Route path="upload" component={Upload}/>
-                <Route path=":postId" component={PostContainer}/>
+                <Route path=":postSlug" component={PostContainer}/>
             </Route>
             
         </Route>

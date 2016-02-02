@@ -2,12 +2,12 @@ import dispatcher from '../dispatcher';
 import $ from 'jquery';
 import PostStore from '../stores/PostStore';
 
-export function getById(id){
+export function getBySlug(slug){
     console.log(PostStore);
-    var url = '/posts/' + id;
+    var url = '/posts/' + slug;
     
     $.getJSON(url, function(result){
-        console.log('AJAX request: #',id);
+        console.log('AJAX request: ',slug);
         
 		dispatcher.dispatch({
 			type: "posts.retrieved",

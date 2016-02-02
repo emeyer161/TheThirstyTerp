@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = array('title', 'body', 'user_id', 'img_filename');
+    protected $fillable = array('title', 'body', 'user_id', 'img_filename', 'slug');
     
     protected $casts = [ 
-        'ID' => 'integer',
+        'id' => 'integer',
         'page_views' => 'integer',
-        ];
+    ];
 }
