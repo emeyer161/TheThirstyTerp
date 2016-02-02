@@ -3,7 +3,14 @@
 
 # But not these files...
 !.gitignore
+!/application
 !/application/*
-!/application/**
+!/application/*/*
+!/application/*/*/*
+!/application/*/*/*/*
+!/application/*/*/*/*/*
+!/public_html
 !/public_html/*
-!/public_html/*
+!/public_html/*/*
+!/public_html/*/*/*
+!/public_html/*/*/*/*
