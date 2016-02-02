@@ -34,6 +34,10 @@ var styles = {
 };
 
 class FullArticle extends React.Component {
+    _createMarkup(string) { 
+        return {__html: string}; 
+    }
+    
     render(){
         return  <section className='Article' style={styles.main}>
                     <header id='articleHeader' style={styles.header}>
@@ -43,7 +47,7 @@ class FullArticle extends React.Component {
                         </div>
                         <h2 style={styles.meta}>{this.props.post.user_id}  |  {this.props.post.created_at}</h2>
                     </header>
-                    <p id="articleBody" style={styles.body}>{this.props.post.body}</p>
+                    <p id="articleBody" style={styles.body} dangerouslySetInnerHTML={this._createMarkup(this.props.post.body)} />
                 </section>;
     }
 }

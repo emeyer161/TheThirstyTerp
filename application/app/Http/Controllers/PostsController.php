@@ -29,6 +29,7 @@ class PostsController extends Controller
         $data = $request->all(); //aka req.body
         
         $data['slug'] = Str::slug($data['title']);
+        $data['body'] = trim( nl2br($data['body']) );
         
         $newPost = Post::create($data);
         
