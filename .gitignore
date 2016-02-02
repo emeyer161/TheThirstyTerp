@@ -2,6 +2,7 @@
 .bash_logout
 .bash_profile
 .bashrc
+.c9
 .cagefs
 .cl.selector
 .contactemail
@@ -31,7 +32,7 @@ git_pub
 logs
 mail
 node
-npm-debug.logs
+npm-debug.log
 perl
 perl5
 public_ftp

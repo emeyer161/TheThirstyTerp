@@ -1,4 +1,5 @@
 import React from 'react';
+// import AlloyEditor from 'alloyeditor';
 // import Radium from 'radium';
 
 var styles = {
@@ -37,7 +38,7 @@ class Upload extends React.Component {
             		<h3>Title:</h3>
             	        <input type="text" name='title' style={styles.input} />
             	    <h3>Body:</h3>
-            	        <textarea type="text" name='body' style={styles.inputBody} />
+            	        <textarea type="text" id="postBody" name='body' style={styles.inputBody} />
             	    <h3>Image Filename:</h3>
             	        <input type="text" name='img_filename' style={styles.input} />
             	    <h3>User ID:</h3>
@@ -47,6 +48,10 @@ class Upload extends React.Component {
             	    <button type="submit" value="Submit" style={styles.input} >Submit</button>
             	</form>
             </section>;
+  }
+  
+  componentDidUpdate(){
+    //   AlloyEditor.editable('postBody');
   }
 }
 
