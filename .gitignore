@@ -30,7 +30,9 @@ git_rsa
 git_pub
 logs
 mail
-node_modulesnpm-debug.logsperl
+node
+npm-debug.logs
+perl
 perl5
 public_ftp
 tmp
