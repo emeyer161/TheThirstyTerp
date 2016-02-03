@@ -70,7 +70,7 @@ class PostBuilder extends React.Component {
         
         
         var request = new XMLHttpRequest();
-        request.open("POST", "https://thethirstyterp-emeyer161.c9users.io/posts");
+        request.open("POST", "/posts");
         request.send(formData);
     }
   
