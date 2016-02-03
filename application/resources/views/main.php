@@ -14,6 +14,7 @@
           outline: 0;
       }
     </style>
+    <link rel="stylesheet" href="./css/quill.snow.css">
   </head>
   <body>
     <div id='app' />

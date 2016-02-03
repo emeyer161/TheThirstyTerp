@@ -13,7 +13,7 @@ import Videos from './containers/Videos';
 import About from './containers/About';
 import Blog from './containers/Blog';
 
-import Upload from './components/Upload';
+import PostBuilder from './components/PostBuilder';
 import PostContainer from './containers/PostContainer';
 
 var styles = {
@@ -60,7 +60,7 @@ ReactDOM.render((
             <Route path="about" component={About}/>
             
             <Route path="posts" component={Blog}>
-                <Route path="upload" component={Upload}/>
+                <Route path="upload" component={PostBuilder}/>
                 <Route path=":postSlug" component={PostContainer}/>
             </Route>
             
