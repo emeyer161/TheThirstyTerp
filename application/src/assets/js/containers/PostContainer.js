@@ -1,12 +1,23 @@
 import React from 'react';
 import $ from 'jquery';
-// import Radium from 'radium';
+
 import FullArticle from '../components/FullArticle';
+import PostBuilder from '../components/PostBuilder';
 import PostStore from '../stores/PostStore';
 
 var styles = {
     main:{
     
+    },
+    editButton:{
+        display:'block',
+        width:'100px',
+        height:'50px',
+        float:'right',
+        backgroundColor:'red',
+        color:'white',
+        border:'none',
+        borderRadius:'50px'
     }
 };
 
@@ -15,7 +26,9 @@ class PostContainer extends React.Component {
         super();
         
         this.state = {
-            post: {}
+            post: {},
+            editMode: false,
+            authenticated: true
         };
     
         this._getPost = this._getPost.bind(this);
@@ -39,10 +52,35 @@ class PostContainer extends React.Component {
             post: PostStore.getPostBySlug( slug ? slug : this.props.params.postSlug )
         });
     }
+    
+    _updatePost(values){
+        $.ajax({
+            type: "PUT",
+            url: "/posts/"+values.id,
+            data: values,
+            success: function() {
+                alert('Your post has been updated!');
+                this._toggleEditMode();
+            }.bind(this),
+            error: function() {
+                alert("Apparently Failed but honestly probably don't believe it. I bet it worked");
+                this._toggleEditMode();
+            }.bind(this)
+        });
+    }
+    
+    _toggleEditMode(){
+        this.setState({
+            editMode: !this.state.editMode
+        });
+    }
   
     render(){
         return  <section id='postContainer' style={styles.main}>
-    		        <FullArticle post={this.state.post} />
+                    <button onClick={this._toggleEditMode.bind(this)} style={styles.editButton}>Edit</button>
+                    {this.state.editMode
+                    ?   <PostBuilder post={this.state.post} onSubmit={this._updatePost.bind(this)} />
+                    :   <FullArticle post={this.state.post} />}
                 </section>;
     }
 }

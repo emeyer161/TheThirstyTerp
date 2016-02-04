@@ -9,6 +9,7 @@ var styles = {
         borderBottom: '2px dotted gray'
     },
     title:{
+        display:'inline-block',
         fontSize:'40px',
         margin:'0 0 10px 0'
     },
@@ -52,6 +53,8 @@ class FullArticle extends React.Component {
     }
 }
 
-export default FullArticle;
+FullArticle.defaultProps = {
+    img_filename: 'empty.jpg'
+};
 
-// ../../../dist/img/contentImages/
+export default FullArticle;

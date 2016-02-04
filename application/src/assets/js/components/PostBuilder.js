@@ -34,21 +34,16 @@ var styles = {
 };
 
 class PostBuilder extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         
         this.state={
-            values:{
-                // editor:'',
-                // title:'',
-                // imgFilename:'',
-                // userId:''
-            },
+            values:this.props.post
         };
     }
   
     _onEditorChange(value) {
-        this._onTextChange(value, 'editor');
+        this._onTextChange(value, 'body');
     }
     
     _onTextChange(value, id){
@@ -60,34 +55,27 @@ class PostBuilder extends React.Component {
         });
     }
     
-    _clicked(){
-        var formData = new FormData();
-
-        formData.append("title", this.state.values.title);
-        formData.append("body", this.state.values.editor);
-        formData.append("img_filename", this.state.values.imgFilename);
-        formData.append("user_id", this.state.values.userId);
-        
-        
-        var request = new XMLHttpRequest();
-        request.open("POST", "/posts");
-        request.send(formData);
+    _submit(){
+        var newValues = this.state.values;
+        console.log('submitting: ',newValues);
+        this.props.onSubmit(newValues);
     }
-  
+    
     render(){
         return  <form id='postBuilder' style={styles.main}>
             		<h3>Title:</h3>
-            		    <TextBar id='title' onChange={this._onTextChange.bind(this)} style={styles.textBar} />
+            		    <TextBar id='title' value={this.state.values.title} onChange={this._onTextChange.bind(this)} style={styles.textBar} />
             	    <h3>Body:</h3>
             	        <ReactQuill theme="snow" style={styles.editor}
-            	            value={this.state.values.editor}
+            	            defaultValue={this.props.post.body}
+            	            value={this.state.values.body}
                             onChange={this._onEditorChange.bind(this)} />
             	    <h3>Image Filename:</h3>
-            	        <TextBar id='imgFilename' onChange={this._onTextChange.bind(this)} style={styles.textBar} />
+            	        <TextBar id='img_filename' value={this.state.values.img_filename} onChange={this._onTextChange.bind(this)} style={styles.textBar} />
             	    <h3>User ID:</h3>
-            	        <TextBar id='userId' onChange={this._onTextChange.bind(this)} style={styles.textBar} />
+            	        <TextBar id='user_id' value={this.state.values.user_id} onChange={this._onTextChange.bind(this)} style={styles.textBar} />
                     <br/><br/>
-            	    <button onClick={this._clicked.bind(this)} style={styles.textBar}>Submit</button>
+            	    <button onClick={this._submit.bind(this)} style={styles.textBar}>Submit</button>
                 </form>;
     }
 }

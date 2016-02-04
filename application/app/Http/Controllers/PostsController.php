@@ -57,14 +57,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Post::update($id, $request->all()) ????
+        // Post::update($id, $request->all())
         $post = Post::find($id);
-        
         $post->fill( $request->all() );
-        $post->slug = Str::slug($post->title);
+        // $post->slug = Str::slug($post->title);
         $post->save();
         
-        return $post;
+        return '{}';
     }
 
     /**
