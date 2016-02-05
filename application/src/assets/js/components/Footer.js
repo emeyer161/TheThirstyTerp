@@ -15,8 +15,8 @@ var styles = {
 class Footer extends React.Component {
   render(){
     return  <section id='footer' style={styles.main}>
-    			Testing 123 This is our stuff. Dont take it. <br />
-    			© Copyright 2016, The Thirsty Terp , New York, NY. [Terms of Use | Privacy Policy]
+    			This is our stuff. Dont take it. <br />
+    			© Copyright 2016, The Thirsty Terp, New York, NY. [Terms of Use | Privacy Policy]
             </section>;
   };
 }

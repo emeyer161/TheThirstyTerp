@@ -10,14 +10,24 @@ var styles = {
     
     },
     editButton:{
-        display:'block',
-        width:'100px',
-        height:'50px',
+        display:'flex',
+        width:'125px',
+        height:'32px',
+        marginTop:'8px',
         float:'right',
-        backgroundColor:'red',
-        color:'white',
+        background:'none',
         border:'none',
         borderRadius:'50px'
+    },
+    editImage:{
+        display:'inline-block',
+        height:'inherit',
+        marginRight:'5px'
+    },
+    editText:{
+        fontFamily:'sans-serif',
+        fontSize:'28px',
+        textAlign:'center'
     }
 };
 
@@ -54,19 +64,22 @@ class PostContainer extends React.Component {
     }
     
     _updatePost(values){
-        $.ajax({
+        var response = $.ajax({
             type: "PUT",
             url: "/posts/"+values.id,
             data: values,
-            success: function() {
-                alert('Your post has been updated!');
+            dataType: 'text',
+            success: function(result) {
                 this._toggleEditMode();
+                return result;
             }.bind(this),
-            error: function() {
-                alert("Apparently Failed but honestly probably don't believe it. I bet it worked");
+            error: function(result) {
                 this._toggleEditMode();
+                return result;
             }.bind(this)
         });
+        
+        alert(response);
     }
     
     _toggleEditMode(){
@@ -76,11 +89,15 @@ class PostContainer extends React.Component {
     }
   
     render(){
+        console.log(this.state.post);
         return  <section id='postContainer' style={styles.main}>
-                    <button onClick={this._toggleEditMode.bind(this)} style={styles.editButton}>Edit</button>
+                    <button onClick={this._toggleEditMode.bind(this)} style={styles.editButton}>
+                        <img src='./img/edit.png' style={styles.editImage} />
+                        <span style={styles.editText}>{this.state.editMode ? "Show" : "Edit"}</span>
+                    </button>
                     {this.state.editMode
-                    ?   <PostBuilder post={this.state.post} onSubmit={this._updatePost.bind(this)} />
-                    :   <FullArticle post={this.state.post} />}
+                    ?   <PostBuilder initialValues={this.state.post} onSubmit={this._updatePost.bind(this)} />
+                    :   <FullArticle values={this.state.post} />}
                 </section>;
     }
 }

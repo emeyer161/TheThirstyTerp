@@ -47,13 +47,13 @@ var styles = {
 class StubArticle extends React.Component {
     render(){
         return  <div className='StubArticle' style={styles.main}>
-                    <a href={'/#/posts/'+this.props.post.slug}>
+                    <a href={'/#/posts/'+this.props.values.slug}>
                         <div id="imgContainer" style={styles.imgContainer}>
-                            <img src={'./img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
+                            <img src={'./img/contentImages/' + this.props.values.img_filename} style={styles.img}/>
                         </div>
                         <div id='textContainer' style={styles.textContainer}>
-                            <h1 style={styles.title}>{this.props.post.title}</h1>
-                            <h2 style={styles.meta}>{this.props.post.user_id}  |  {this.props.post.created_at}</h2>
+                            <h1 style={styles.title}>{this.props.values.title}</h1>
+                            <h2 style={styles.meta}>{this.props.values.user_id}  |  {this.props.values.created_at}</h2>
                         </div>
                     </a>
                 </div>;

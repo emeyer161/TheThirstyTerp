@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return Post::paginate(5);
+        return Post::orderBy('id', 'desc')->paginate(5);
     }
 
     /**
@@ -63,7 +63,7 @@ class PostsController extends Controller
         // $post->slug = Str::slug($post->title);
         $post->save();
         
-        return '{}';
+        return Post::find($id);
     }
 
     /**

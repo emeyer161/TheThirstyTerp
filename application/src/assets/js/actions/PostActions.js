@@ -29,15 +29,21 @@ export function getFirstPage(){
 }
 
 export function getNextPage(){
-    var pageNum = PostStore.getNextPageNum();
-    var url = 'posts/?page=' + pageNum;
-    
-    $.getJSON(url, function(result){
+	if(PostStore.lastPage()){
 		dispatcher.dispatch({
-			type: "posts.retrieved",
-			posts: result.data,
-			page: result.current_page,
-			lastPage: result.last_page
-		});
-    });
+				type: "posts.allRetrieved"
+			});
+	} else {
+	    var pageNum = PostStore.getNextPageNum();
+	    var url = 'posts/?page=' + pageNum;
+	    
+	    $.getJSON(url, function(result){
+			dispatcher.dispatch({
+				type: "posts.retrieved",
+				posts: result.data,
+				page: result.current_page,
+				lastPage: result.last_page
+			});
+	    });
+	}
 }

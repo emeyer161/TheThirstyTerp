@@ -8,6 +8,14 @@ import LoadNextButton from '../components/LoadNextButton';
 var styles = {
 	main:{
 	    width:'100%'
+	},
+	noMore:{
+	    position:'relative',
+	    margin:'20px auto',
+	    textAlign:'center',
+	    fontSize:'25px',
+	    color:'gray',
+	    fontWeight:'600'
 	}
 };
 
@@ -33,7 +41,7 @@ class StubList extends React.Component {
     
     _updateAll(){
         this.setState({
-           _posts:  PostStore.getAll()
+           _posts:  PostStore.getPosts(this.props.category)
         });
     }
     
@@ -42,11 +50,11 @@ class StubList extends React.Component {
     }
     
     render(){
-        return  <section id='BlogLanding' style={styles.main}>
+        return  <section id='stubList' style={styles.main}>
         			{this.state._posts.map((post, index) => {
-                        return <StubArticle post={post} key={index}/>;
+                        return <StubArticle values={post} key={index}/>;
                     })}
-                    {PostStore.lastPage() ? null :
+                    {PostStore.lastPage() ? <div style={styles.noMore}>No more posts available</div> :
                         <LoadNextButton onClick={this._handleLoadMore.bind(this)} />
                     }
                 </section>;

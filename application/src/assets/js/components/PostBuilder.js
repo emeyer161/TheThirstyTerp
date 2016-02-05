@@ -38,7 +38,7 @@ class PostBuilder extends React.Component {
         super(props);
         
         this.state={
-            values:this.props.post
+            values:this.props.initialValues
         };
     }
   
@@ -56,9 +56,8 @@ class PostBuilder extends React.Component {
     }
     
     _submit(){
-        var newValues = this.state.values;
-        console.log('submitting: ',newValues);
-        this.props.onSubmit(newValues);
+        console.log('submitting: ',this.state.values);
+        this.props.onSubmit(this.state.values);
     }
     
     render(){
@@ -67,7 +66,6 @@ class PostBuilder extends React.Component {
             		    <TextBar id='title' value={this.state.values.title} onChange={this._onTextChange.bind(this)} style={styles.textBar} />
             	    <h3>Body:</h3>
             	        <ReactQuill theme="snow" style={styles.editor}
-            	            defaultValue={this.props.post.body}
             	            value={this.state.values.body}
                             onChange={this._onEditorChange.bind(this)} />
             	    <h3>Image Filename:</h3>

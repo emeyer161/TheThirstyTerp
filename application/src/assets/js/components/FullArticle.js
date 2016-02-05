@@ -42,19 +42,19 @@ class FullArticle extends React.Component {
     render(){
         return  <section className='Article' style={styles.main}>
                     <header id='articleHeader' style={styles.header}>
-                        <h1 style={styles.title}>{this.props.post.title}</h1>
+                        <h1 style={styles.title}>{this.props.values.title}</h1>
                         <div id="imgContainer" style={styles.imgContainer}>
-                            <img src={'./img/contentImages/' + this.props.post.img_filename} style={styles.img}/>
+                            <img src={'./img/contentImages/' + this.props.values.img_filename} style={styles.img}/>
                         </div>
-                        <h2 style={styles.meta}>{this.props.post.user_id}  |  {this.props.post.created_at}</h2>
+                        <h2 style={styles.meta}>{this.props.values.user_id}  |  {this.props.values.created_at}</h2>
                     </header>
-                    <p id="articleBody" style={styles.body} dangerouslySetInnerHTML={this._createMarkup(this.props.post.body)} />
+                    <p id="articleBody" style={styles.body} dangerouslySetInnerHTML={this._createMarkup(this.props.values.body)} />
                 </section>;
     }
 }
 
-FullArticle.defaultProps = {
-    img_filename: 'empty.jpg'
-};
+// FullArticle.defaultProps = {
+//     img_filename: 'empty.jpg'
+// };
 
 export default FullArticle;
