@@ -39,6 +39,8 @@ public_ftp
 tmp
 www
 
+!application
+!public_html
 
 
 
