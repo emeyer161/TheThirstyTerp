@@ -37,7 +37,7 @@ class LandingPage extends React.Component {
 	}
 	render(){
 	    return  <section id='landingPage' style={styles.body}>
-		    		<h1 id="welcome" style={styles.welcome}>Welcome! Schu, the latin is mostly all gone</h1>
+		    		<h1 id="welcome" style={styles.welcome}>Welcome! Authors, the latin is mostly all gone.</h1>
 		    		<DecoratedCarousel slides={this.state.slides} show={1} delay={4} buttons={false} style={styles.carousel}/>
 		    		<StubList category='all' />
 	            </section>;

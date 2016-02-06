@@ -12,4 +12,8 @@ class Post extends Model
         'id' => 'integer',
         'page_views' => 'integer',
     ];
+
+    public function post(){
+    	return $this->hasMany(Comment::class);
+    }
 }
