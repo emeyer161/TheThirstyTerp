@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Providers;
+namespace TheThirstyTerp\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'EricMeyer\Model' => 'EricMeyer\Policies\ModelPolicy',
+        'TheThirstyTerp\Model' => 'TheThirstyTerp\Policies\ModelPolicy',
     ];
 
     /**

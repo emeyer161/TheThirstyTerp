@@ -1,10 +1,10 @@
 <?php
 
-namespace EricMeyer\Http\Controllers\Auth;
+namespace TheThirstyTerp\Http\Controllers\Auth;
 
-use EricMeyer\User;
+use TheThirstyTerp\User;
 use Validator;
-use EricMeyer\Http\Controllers\Controller;
+use TheThirstyTerp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

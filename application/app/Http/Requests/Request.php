@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Http\Requests;
+namespace TheThirstyTerp\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

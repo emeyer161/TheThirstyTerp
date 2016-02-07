@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Providers;
+namespace TheThirstyTerp\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

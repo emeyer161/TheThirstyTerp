@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Console\Commands;
+namespace TheThirstyTerp\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

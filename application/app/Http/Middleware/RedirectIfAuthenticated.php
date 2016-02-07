@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Http\Middleware;
+namespace TheThirstyTerp\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

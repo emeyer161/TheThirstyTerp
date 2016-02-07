@@ -1,8 +1,9 @@
-<?php namespace EricMeyer\Http\Controllers;
+<?php namespace TheThirstyTerp\Http\Controllers;
 
-use EricMeyer\Http\Requests;
-use EricMeyer\Http\Controllers\Controller;
-use EricMeyer\Post;
+use TheThirstyTerp\Http\Requests;
+use TheThirstyTerp\Http\Controllers\Controller;
+use TheThirstyTerp\Post;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,7 +16,13 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return Post::orderBy('id', 'desc')->paginate(5);
+        $posts = Post::orderBy('id', 'desc')->paginate(5);
+        foreach ($posts as $post){
+            $post['comments'] = $post->comments;
+            $post['tags'] = $post->tags()->lists('name')->toArray();
+        }
+        
+        return $posts;
     }
 
     /**
@@ -27,13 +34,9 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all(); //aka req.body
-        
         $data['slug'] = Str::slug($data['title']);
-        $data['body'] = trim( nl2br($data['body']) );
         
-        $newPost = Post::create($data);
-        
-        return $newPost;
+        return Post::create($data);
     }
 
     /**
@@ -42,10 +45,14 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        // return Post::find($id);
-        return Post::where('slug',$id)->first();
+        $post = Post::where('slug',$slug)->first();
+        $post['comments'] = $post->comments;
+        $post['tags'] = $post->tags()->lists('name')->toArray();
+
+        return $post;
+        // return Post::where('slug',$slug)->first();
     }
 
     /**
@@ -60,7 +67,7 @@ class PostsController extends Controller
         // Post::update($id, $request->all())
         $post = Post::find($id);
         $post->fill( $request->all() );
-        // $post->slug = Str::slug($post->title);
+        // $post->slug = Str::slug($post->title);  // Update slug (Bad idea)
         $post->save();
         
         return Post::find($id);

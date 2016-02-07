@@ -33,17 +33,17 @@ $app->bind('path.public', function ()
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    EricMeyer\Http\Kernel::class
+    TheThirstyTerp\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    EricMeyer\Console\Kernel::class
+    TheThirstyTerp\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    EricMeyer\Exceptions\Handler::class
+    TheThirstyTerp\Exceptions\Handler::class
 );
 
 

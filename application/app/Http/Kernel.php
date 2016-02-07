@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Http;
+namespace TheThirstyTerp\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -24,11 +24,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \EricMeyer\Http\Middleware\EncryptCookies::class,
+            \TheThirstyTerp\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \EricMeyer\Http\Middleware\VerifyCsrfToken::class,
+            \TheThirstyTerp\Http\Middleware\VerifyCsrfToken::class,
         ],
 
         'api' => [
@@ -44,10 +44,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \EricMeyer\Http\Middleware\Authenticate::class,
+        'auth' => \TheThirstyTerp\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \EricMeyer\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \TheThirstyTerp\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'cors' => \EricMeyer\Http\Middleware\Cors::class,
+        'cors' => \TheThirstyTerp\Http\Middleware\Cors::class,
     ];
 }

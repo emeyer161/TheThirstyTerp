@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        EricMeyer\Providers\AppServiceProvider::class,
-        EricMeyer\Providers\AuthServiceProvider::class,
-        EricMeyer\Providers\EventServiceProvider::class,
-        EricMeyer\Providers\RouteServiceProvider::class,
+        TheThirstyTerp\Providers\AppServiceProvider::class,
+        TheThirstyTerp\Providers\AuthServiceProvider::class,
+        TheThirstyTerp\Providers\EventServiceProvider::class,
+        TheThirstyTerp\Providers\RouteServiceProvider::class,
 
     ],
 

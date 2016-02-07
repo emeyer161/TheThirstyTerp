@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer\Exceptions;
+namespace TheThirstyTerp\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;

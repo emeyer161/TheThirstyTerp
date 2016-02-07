@@ -1,8 +1,8 @@
 <?php
 
-namespace EricMeyer\Http\Controllers\Auth;
+namespace TheThirstyTerp\Http\Controllers\Auth;
 
-use EricMeyer\Http\Controllers\Controller;
+use TheThirstyTerp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

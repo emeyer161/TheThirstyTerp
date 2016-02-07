@@ -38,7 +38,10 @@ class PostBuilder extends React.Component {
         super(props);
         
         this.state={
-            values:this.props.initialValues
+            values:this.props.initialValues || {
+                title:'',
+                body:''
+            }
         };
     }
   

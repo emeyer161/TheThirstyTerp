@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer;
+namespace TheThirstyTerp;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,10 +10,19 @@ class Post extends Model
     
     protected $casts = [ 
         'id' => 'integer',
-        'page_views' => 'integer',
+        'view_count' => 'integer',
+
     ];
 
-    public function post(){
+    public function user(){
+    	return $this->hasOne(User::class);
+    }
+
+    public function tags(){
+    	return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function comments(){
     	return $this->hasMany(Comment::class);
     }
 }

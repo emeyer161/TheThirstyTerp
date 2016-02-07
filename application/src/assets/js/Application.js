@@ -14,7 +14,6 @@ import About from './containers/About';
 import Blog from './containers/Blog';
 
 import Upload from './containers/Upload';
-import Update from './containers/Update';
 import PostContainer from './containers/PostContainer';
 
 var styles = {

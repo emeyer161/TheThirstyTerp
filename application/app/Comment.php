@@ -1,6 +1,6 @@
 <?php
 
-namespace EricMeyer;
+namespace TheThirstyTerp;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,8 @@ class Comment extends Model
 	protected $fillable = array('post_id', 'body', 'user_id');
     
     protected $casts = [ 
-        'id' => 'integer'
+        'id' => 'integer',
+        'post_id' => 'integer'
     ];
 
     public function post(){

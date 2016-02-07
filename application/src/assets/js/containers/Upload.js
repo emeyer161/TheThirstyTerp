@@ -26,7 +26,7 @@ class Upload extends React.Component {
     
     render(){
         return  <section id='upload' style={styles.main}>
-                    <PostBuilder cb={this._uploadValues.bind(this)} />
+                    <PostBuilder initialValues={''} onSubmit={this._uploadValues.bind(this)} />
                 </section>;
     }
 }

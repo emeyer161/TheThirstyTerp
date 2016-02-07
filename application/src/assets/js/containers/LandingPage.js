@@ -4,8 +4,6 @@ import RightColumn from '../components/RightColumn';
 import StubList from './StubList';
 import DecoratedCarousel from '../components/Carousel/DecoratedCarousel';
 
-// import Hero from '../components/Hero';
-
 let styles = {
 	body: {
 		display: 'inline-block',
