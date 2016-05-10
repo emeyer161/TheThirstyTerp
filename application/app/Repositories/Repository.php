@@ -32,8 +32,8 @@ abstract class Repository
 
     public function delete($model)
     {
-        $model = new $this->model;
-        $model->delete();
+        // $model = new $this->model;
+        $this->model->delete();
         return response()->json(true);
     }
 
