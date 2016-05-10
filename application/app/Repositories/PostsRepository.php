@@ -7,11 +7,16 @@ use Illuminate\Support\Str;
 
 class PostsRepository extends Repository
 {
-	public function __construct()
-	{
-        // $this->model = Post::class;
-		$this->model = 'App\Post';
-	}
+	// public function __construct()
+	// {
+ //        // $this->model = Post::class;
+	// 	// $this->model = 'App\Post';
+	// }
+
+    public function model()
+    {
+        return Post::class;
+    }
 
 	public function create(array $data)
 	{
