@@ -1,5 +1,5 @@
 <?php
-    // dd($posts['data'][0]);
+    // dd(phpversion());
 ?>
 
 @extends('layouts.cms')
