@@ -1,6 +1,0 @@
-[19-Jan-2016 05:58:54 UTC] PHP Fatal error:  Class 'view' not found in /home/yodude0101/theThirstyTerp/app/Http/routes.php on line 17
-[26-Jan-2016 01:20:11 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ']' in /home/yodude0101/theThirstyTerp/app/Http/routes.php on line 35
-[26-Jan-2016 05:26:31 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/yodude0101/theThirstyTerp/app/Http/routes.php on line 62
-[26-Jan-2016 05:26:32 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/yodude0101/theThirstyTerp/app/Http/routes.php on line 62
-[27-Jan-2016 22:51:24 UTC] PHP Warning:  require(/home/yodude0101/public_html/../theThirstyTerp/bootstrap/autoload.php): failed to open stream: No such file or directory in /home/yodude0101/public_html/index.php on line 24
-[27-Jan-2016 22:51:24 UTC] PHP Fatal error:  require(): Failed opening required '/home/yodude0101/public_html/../theThirstyTerp/bootstrap/autoload.php' (include_path='.:/opt/alt/php55/usr/share/pear:/opt/alt/php55/usr/share/php') in /home/yodude0101/public_html/index.php on line 24

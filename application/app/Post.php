@@ -1,12 +1,13 @@
 <?php
 
-namespace TheThirstyTerp;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use File;
 
 class Post extends Model
 {
-    protected $fillable = array('title', 'body', 'user_id', 'img_filename', 'slug');
+    protected $fillable = array('title', 'description', 'body', 'video_id');
     
     protected $casts = [ 
         'id' => 'integer',
@@ -15,7 +16,7 @@ class Post extends Model
     ];
 
     public function user(){
-    	return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function tags(){
@@ -24,5 +25,27 @@ class Post extends Model
 
     public function comments(){
     	return $this->hasMany(Comment::class);
+    }
+
+    public function features(){
+        return $this->hasMany(Feature::class);
+    }
+
+    public function prettyTags(){
+        return $this->tags()->get(array('name'));
+    }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($post) {
+            $post->comments()->delete();
+            $post->features()->delete();
+
+            $filename = public_path('img/posts/'.$post->slug.'.png');
+            if (File::exists($filename)){
+                unlink($filename);
+            }
+        });
     }
 }

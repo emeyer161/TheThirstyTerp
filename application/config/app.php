@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => 'http://thethirstyterp.com/',
+    'url' => 'http://localhost',
 
     /*
     |--------------------------------------------------------------------------
@@ -151,10 +151,16 @@ return [
         /*
          * Application Service Providers...
          */
-        TheThirstyTerp\Providers\AppServiceProvider::class,
-        TheThirstyTerp\Providers\AuthServiceProvider::class,
-        TheThirstyTerp\Providers\EventServiceProvider::class,
-        TheThirstyTerp\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+
+        Illuminate\Html\HtmlServiceProvider::class,
+
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -202,6 +208,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Input'     => Illuminate\Support\Facades\Input::class,
+        
+        'Form'      => Illuminate\Html\FormFacade::class,
+        'HTML'      => Illuminate\Html\HtmlFacade::class,
+
+
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

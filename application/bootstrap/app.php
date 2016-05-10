@@ -15,11 +15,6 @@ $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
 
-$app->bind('path.public', function ()
-{
-    return base_path() . '/public_html';
-});
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
@@ -33,25 +28,22 @@ $app->bind('path.public', function ()
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    TheThirstyTerp\Http\Kernel::class
+    App\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    TheThirstyTerp\Console\Kernel::class
+    App\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    TheThirstyTerp\Exceptions\Handler::class
+    App\Exceptions\Handler::class
 );
 
-
-// GUY ON THE WEB SAID TO DO THIS
-// allow origin
-header('Access-Control-Allow-Origin: *');
-// add any additional headers you need to support here
-header('Access-Control-Allow-Headers: Origin, Content-Type');
+$app->bind('path.public', function() {
+    return base_path().'/../public_html';
+});
 
 /*
 |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace TheThirstyTerp\Jobs;
+namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
 

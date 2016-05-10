@@ -1,1 +1,0 @@
-module.exports.POSTS_LOADED = "posts.loaded";

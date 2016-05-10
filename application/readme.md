@@ -1,27 +1,46 @@
-## Laravel PHP Framework
+** CLEAN CODE IS YOUR GOAL **
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+DONE -- Create a fresh Laravel installation
+DONE -- Enable Authentication using the default scaffolding
+DONE -- Add Whoops and Debugbar
+DONE -- Advance your base layout using the files that Laravel generated for you in the previous step
+DONE -- Twitter Bootstrap is given to you here
+	http://getbootstrap.com/2.3.2/getting-started.html#examples
+DONE -- Create a public and private sections to your site with different look/feel
+	One public and one admin panel site
+DONE -- Install gulp Less stuff
+    npm install, nav through files and make it work
+    @import "../../../node_modules/bootstrap-less/bootstrap/index"
+DONE -- Overwrite a bootstrap Less variable
+    @primaryColor: #ccc;
+    @secondaryColor: #ababab;
+DONE -- bootstrap my forms
+DONE -- button group my buttons
+DONE -- Forms method spoofing
+DONE -- fix id - slug descrepency
+DONE -- fix always error flash
+DONE -- refill forms "withInput()"
+DONE -- auth->user instead of passing with form
+DONE -- consolidate partials (ie. form builder etc.) ** abstraction **
+DONE -- delete confirmation (maybe: http://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+form request object (rules, authorization)
+	DONE -- middleware
+	policies
+	DONE -- authServiceProvider
+	DONE -- controller
+	repo
+	roles groups permissions policies tenants
+		superadmin, admin, editor, writer, reader
+	soft delete based on specific roles
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+$data = $request->all();
+$data->user_id = Auth::id();
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+DONT --start adding React back in (2 separate apps)

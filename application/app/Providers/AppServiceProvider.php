@@ -1,8 +1,11 @@
 <?php
 
-namespace TheThirstyTerp\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+
+use App\Role;
+use App\Tag;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share('roles', Role::all()->toArray());
+        view()->share('tags', Tag::all()->toArray());
     }
 
     /**
@@ -23,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('path.public', function() {
+          return base_path().'/../public_html';
+        });
     }
 }

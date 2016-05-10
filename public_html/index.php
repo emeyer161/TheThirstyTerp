@@ -40,9 +40,9 @@ require __DIR__.'/../application/bootstrap/autoload.php';
 $app = require_once __DIR__.'/../application/bootstrap/app.php';
 
 // set the public path to this directory
-$app->bind('path.public', function() {
-    return __DIR__;
-});
+// $app->bind('path.public', function() {
+//     return __DIR__;
+// });
 
 
 /*

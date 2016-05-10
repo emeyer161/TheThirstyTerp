@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => TheThirstyTerp\User::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [

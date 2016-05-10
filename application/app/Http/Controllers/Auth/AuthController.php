@@ -1,12 +1,17 @@
 <?php
 
-namespace TheThirstyTerp\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use TheThirstyTerp\User;
+use App\User;
 use Validator;
-use TheThirstyTerp\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+
+use App\Repositories\UsersRepository;
+use App\Role;
+use Redirect;
 
 class AuthController extends Controller
 {
@@ -28,16 +33,17 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UsersRepository $userRepo)
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $this->userRepo = $userRepo;
     }
 
     /**
@@ -49,10 +55,33 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'first_name'    => 'required|max:255',
+            'last_name'     => 'required|max:255',
+            'user_name'     => 'required|max:255|unique:users',
+            'email'         => 'required|max:255|unique:users|email',
+            'password'      => 'required|min:6|confirmed',
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect(action('Auth\AuthController@showRegistrationForm'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        Auth::guard($this->getGuard())->login($this->create($request->all()));
+
+        return redirect($this->redirectPath());
     }
 
     /**
@@ -63,10 +92,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $data['role_id'] = max(Role::all()->toArray())['id'];
+        $data['password'] = bcrypt($data['password']);
+        return $this->userRepo->create( $data );
+        // return User::create([
+        //     'first_name' => $data['first_name'],
+        //     'last_name' => $data['last_name'],
+        //     'user_name' => $data['user_name'],
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password']),
+        // ]);
     }
 }
