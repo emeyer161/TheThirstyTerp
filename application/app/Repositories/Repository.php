@@ -11,7 +11,7 @@ abstract class Repository
 
     public function getAll()
     {
-        return $this->model::all();
+        return $this->model->all();
 
     }
 
