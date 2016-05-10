@@ -4,7 +4,7 @@ use Illuminate\Http\Response;
 
 abstract class Repository
 {
-    public function create(array $data)
+    public function create($data)
     {
         $model = new $this->model;
         return $model::create( $data );
@@ -23,7 +23,7 @@ abstract class Repository
         return $model::find( $id );
     }
 
-    public function update(array $data, $id)
+    public function update($data, $id)
     {
         $model = new $this->model;
         $model::find($id)->fill( $data )->save();
