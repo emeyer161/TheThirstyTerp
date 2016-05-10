@@ -9,7 +9,8 @@ class PostsRepository extends Repository
 {
 	public function __construct()
 	{
-		$this->model = Post::class;
+        // $this->model = Post::class;
+		$this->model = 'App\Post';
 	}
 
 	public function create(array $data)

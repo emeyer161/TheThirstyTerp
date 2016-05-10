@@ -6,7 +6,8 @@ class FeaturesRepository extends Repository
 {
 	public function __construct()
 	{
-		$this->model = Feature::class;
+		// $this->model = Feature::class;
+        $this->model ='App\Feature';
 	}
 
 	public function getAllClean()
