@@ -10,7 +10,7 @@ class CommentsRepository extends Repository
 	// 	$this->model = 'App\Comment';
 	// }
 
-	public function model()
+	public static function model()
     {
         return Comment::class;
     }

@@ -10,7 +10,7 @@ class FeaturesRepository extends Repository
  //        // $this->model = 'App\Feature';
 	// }
 
-    public function model()
+    public static function model()
     {
         return Feature::class;
     }

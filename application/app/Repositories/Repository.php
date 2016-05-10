@@ -6,24 +6,24 @@ abstract class Repository
 {
     public function create(array $data)
     {
-        return $this->model()::create( $data );
+        return static::model()::create( $data );
     }
 
     public function getAll()
     {
-        return $this->model()::all();
+        return static::model()::all();
 
     }
 
     public function getById($id)
     {
-        return $this->model()::find( $id );
+        return static::model()::find( $id );
     }
 
     public function update(array $data, $id)
     {
-        $this->model()::find($id)->fill( $data )->save();
-        return $this->model()::find( $id );
+        static::model()::find($id)->fill( $data )->save();
+        return static::model()::find( $id );
     }
 
     public function delete($model)
@@ -34,7 +34,7 @@ abstract class Repository
 
     public function destroy($id)
     {
-        $this->model()::destroy( $id );
+        static::model()::destroy( $id );
         return response()->json(true);
     }
 }

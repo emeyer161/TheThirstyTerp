@@ -13,7 +13,7 @@ class PostsRepository extends Repository
 	// 	// $this->model = 'App\Post';
 	// }
 
-    public function model()
+    public static function model()
     {
         return Post::class;
     }
