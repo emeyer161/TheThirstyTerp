@@ -30,10 +30,10 @@ abstract class Repository
         return $model::find( $id );
     }
 
-    public function delete($model)
+    public function delete($instance)
     {
         // $model = new $this->model;
-        $this->model->delete();
+        $instance->delete();
         return response()->json(true);
     }
 
