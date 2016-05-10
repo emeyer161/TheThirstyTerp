@@ -12,7 +12,7 @@ class PostsRepository extends Repository
 		$this->model = Post::class;
 	}
 
-	public function create(array $data)
+	public function create($data)
 	{
         $post           = Post::create( $data );
         $post->slug     = Str::slug($post->title);
@@ -34,7 +34,7 @@ class PostsRepository extends Repository
 		return $this->getBySlug($post->slug); // Publish event 'post_created': Redis will tell NodeJS, who will tell the users
 	}
 
-	public function update(array $data, $slug)
+	public function update($data, $slug)
     {
     	$tag_ids = array();
         if(isset($data['tags'])){
@@ -88,7 +88,7 @@ class PostsRepository extends Repository
         		->paginate(20);
     } 
 
-	public function getBySlug(string $slug)
+	public function getBySlug($slug)
 	{
 		$post = $this->_postsRelationships()
 			->where('slug',$slug)->first();
