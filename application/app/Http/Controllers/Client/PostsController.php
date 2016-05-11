@@ -58,7 +58,7 @@ class PostsController extends Controller
     public function show($slug)
     {
         return view('client.post', [
-	    	'post' => $this->postRepo->getBySlug( $slug )->toArray()
+	    	'post' => $this->postRepo->getBySlug( $slug )
 	    ]);
     }
 }

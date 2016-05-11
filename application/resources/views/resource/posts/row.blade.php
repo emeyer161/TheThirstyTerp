@@ -13,19 +13,20 @@
     </td>
     @if ($cms == true)
         <td class="rowlink-skip">
-            @can('update-post', $post['id'])
-                <a class="btn btn-default btn-large" href={{ action('Cms\PostsController@edit', ['slug' => $post['slug']]) }} role="button">Edit Post &raquo;</a>
-            @endcan
-        </td>
-        <td class="rowlink-skip">
             @can('features')
                 <a class="btn btn-warning btn-large" href={{ action('Cms\FeaturesController@featurePost', ['slug' => $post['slug']]) }} role="button"><span class="glyphicon glyphicon-star"></a>
             @endcan
         </td>
-        <td class="rowlink-skip">
-            @can('destroy-post', $post['id'])
-    	       @include('resource.general.delete-button', array('url' => action('Cms\PostsController@delete', ['id' => $post['id']]) ))
-            @endcan
-        </td>
+        @can('change-post', $post['id'])
+            <td class="rowlink-skip">
+                <a class="btn btn-default btn-large" href={{ action('Cms\PostsController@edit', ['slug' => $post['slug']]) }} role="button">Edit Post &raquo;</a>
+            </td>
+            <td class="rowlink-skip">
+               @include('resource.delete-button', array('url' => action('Cms\PostsController@delete', ['id' => $post['id']]) ))
+            </td>
+        @else
+            <td></td>
+            <td></td>
+        @endcan
     @endif
 </tr>

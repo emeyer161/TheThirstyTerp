@@ -32,17 +32,16 @@ class AuthServiceProvider extends ServiceProvider
         $gate->before(function ($user, $ability) {
             if (!$user->cmsEntry()){
                 return false;
-            } else if ($user->is('SuperAdmin') && ($ability != 'update-user-role')) {
+            } else if ($user->is('SuperAdmin') && ($ability != 'change-user')) {
                 return true;
             }
         });
 
-        $gate->define('update-user-role', function ($user, $user2) {
-            if ($user->is('SuperAdmin')) {
-                return !$user2->is('SuperAdmin');
-            } else if ($user->is('Admin')) {
-                return !($user2->is('Admin') || $user2->is('SuperAdmin'));
+        $gate->define('change-user', function ($user, $user2) {
+            if (($user->is('SuperAdmin') || $user->is('Admin')) && ($user->rank() < $user2->rank())){
+                return true;
             }
+            return false;
         });
 
         $gate->define('features', function($user){
@@ -53,22 +52,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->is('Admin') || $user->is('Writer');
         });
 
-        $gate->define('update-post', function ($user, $id) {
+        $gate->define('change-post', function ($user, $id) {
             if ($user->is('Writer')) {
-                return $user->id === Post::where('id', $id)->get()->first()['user_id'];
+                return $user->id === Post::where('id', $id)->get()->first()->user_id;
             }
             return $user->is('Admin');
-        });
-
-        $gate->define('destroy-post', function ($user, $id) {
-            if ($user->is('Writer')) {
-                return $user->id === Post::where('id', $id)->get()->first()['user_id'];
-            }
-            return $user->is('Admin');
-        });
-
-        $gate->define('destroy-user', function ($user, $user2) {
-            return ($user->is('Admin') && $user2->is('Reader'));
         });
     }
 }

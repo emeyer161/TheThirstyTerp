@@ -15,7 +15,7 @@
 @section('blurb', $post ? 'Edit: '.$post['title'] : 'Create New' )
 @section('link')
 	@if ($post)
-		@include('resource.general.delete-button', array('url' => action('Cms\PostsController@delete', ['id' => $post['id']]) ))
+		@include('resource.delete-button', array('url' => action('Cms\PostsController@delete', ['id' => $post['id']]) ))
 	@endif
 @stop
 

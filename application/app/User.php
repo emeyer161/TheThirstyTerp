@@ -74,12 +74,16 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isAtLeast($roleName)
+    public function rank()
     {
-        if ($this->role['id'] <= Role::where('name',$roleName)->get()->first()->toArray()['id'] )
-        {
-            return true;
-        }
-        return false;
+        return $this->role->id;
+    }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) {
+            $user->comments()->delete();
+        });
     }
 }

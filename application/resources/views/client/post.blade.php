@@ -1,5 +1,7 @@
 @extends('layouts.client')
 
+@section('title', $post->title)
+
 @section('style')
 @stop
 
@@ -10,8 +12,8 @@
 		<hr>
 
 		<h2>Comments</h2>
-		@foreach($post['comments'] as $comment)
-            @include('resource.comments.single', $comment)
+		@foreach($post->comments as $comment)
+            @include('resource.comments.row', $comment)
         @endforeach
 		
 		@if(!Auth::guest())

@@ -2,8 +2,8 @@
 <html lang="en">
 
     <head>
-        @include('resource.general.head')
-        <title>Thirsty Blog - @yield('title')</title>
+        @include('resource.head')
+        <title>The Thirsty Terp - @yield('title')</title>
         @yield('head')
 
         <style>
@@ -15,13 +15,13 @@
     </head>
 
     <body id="app-layout">
-        @include('resource.general.header')
+        @include('resource.header')
         
         <div class="container">
             @yield('content')
         </div>
 
-        @include('resource.general.footer')
+        @include('resource.footer')
         
         @yield('javascript')
     </body>

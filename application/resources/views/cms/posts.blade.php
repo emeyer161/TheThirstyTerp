@@ -14,5 +14,5 @@
         </table>
     </div><!--/row-->
 
-    @include('resource.posts.pagination', ['data' => $posts])
+    @include('resource.pagination', ['data' => $posts])
 @stop

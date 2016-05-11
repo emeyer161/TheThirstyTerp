@@ -21,7 +21,7 @@
     </td>
     <td class="rowlink-skip">
         @can('feature')
-	       @include('resource.general.delete-button', array('url' => action('Cms\FeaturesController@delete', ['id' => $feature['id']]) ))
+	       @include('resource.delete-button', array('url' => action('Cms\FeaturesController@delete', ['id' => $feature['id']]) ))
         @endcan
     </td>
 </tr>

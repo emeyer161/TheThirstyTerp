@@ -17,10 +17,10 @@
 		    </thead>
 		    <tbody data-link="row" class="rowlink">
 		      	@foreach($users as $user)
-		            @include('resource.users.row', Array($user, "cms" => true))
+		            @include('cms.users.row')
 		    	@endforeach
 		    </tbody>
 	  	</table>
 	 </div>
-	 @include('resource.posts.pagination', ['data' => $users])
+	 @include('resource.pagination', ['data' => $users])
 @stop

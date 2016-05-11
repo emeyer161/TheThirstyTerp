@@ -21,5 +21,5 @@
             </tbody>
         </table>
     </div><!--/row-->
-    @include('resource.posts.pagination', ['data' => $user->posts])
+    @include('resource.pagination', ['data' => $user->posts])
 @stop

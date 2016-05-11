@@ -16,7 +16,7 @@
 @section('blurb', $prefill['title'] ? $prefill['title'] : 'Create New' )
 @section('link')
 	@if ($feature)
-		@include('resource.general.delete-button', array('url' => action('Cms\FeaturesController@destroy', ['id' => $feature['id']]) ))
+		@include('resource.delete-button', array('url' => action('Cms\FeaturesController@destroy', ['id' => $feature['id']]) ))
 	@endif
 @stop
 
