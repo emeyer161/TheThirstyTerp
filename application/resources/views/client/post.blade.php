@@ -11,7 +11,7 @@
 		
 		<hr>
 
-		<h2>Comments</h2>
+		<h3>Comments</h3>
 		@foreach($post->comments as $comment)
             @include('resource.comments.row', $comment)
         @endforeach

@@ -79,7 +79,7 @@ class AuthController extends Controller
                         ->withInput();
         }
 
-        Auth::guard($this->getGuard())->login($this->create($request->all()));
+        \Auth::guard($this->getGuard())->login($this->create($request->all()));
 
         return redirect($this->redirectPath());
     }
