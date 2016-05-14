@@ -30,10 +30,6 @@
 
 @section('content')
 
-    <div class="col-sm-4 col-xs-12 pull-right" style="text-align: center">
-        <a class="twitter-timeline" href="https://twitter.com/TheThirstyTerp" data-widget-id="685961120058859520" data-screen-name="TheThirstyTerp" width="100%">Tweets by @TheThirstyTerp</a>
-    </div>
-
     <div class="col-sm-8 col-xs-12">
         <div id="featured" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -77,6 +73,10 @@
             </tbody>
         </table>
         @include('resource.pagination', ['data' => $posts])
+    </div>
+    
+    <div class="col-sm-4 col-xs-12 pull-right" style="text-align: center">
+        <a class="twitter-timeline" href="https://twitter.com/TheThirstyTerp" data-widget-id="685961120058859520" data-screen-name="TheThirstyTerp" width="100%">Tweets by @TheThirstyTerp</a>
     </div>
 
 @stop

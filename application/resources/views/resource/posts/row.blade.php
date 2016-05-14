@@ -1,10 +1,10 @@
 <tr>
     <td>
         <a class="div-link" href={{ action(($cms ?'Cms' :'Client').'\PostsController@show', ['slug' => $post['slug']]) }} role="button">
-            <div class='col-xs-3'>
+            <div class='col-sm-3.col-xs-12'>
                 <img src={{"/img/posts/".$post['slug'].".png"}} style="max-width:100%"/>
             </div>
-            <div class='col-xs-9'>
+            <div class='col-sm-9.col-xs-12'>
                 <h2>{{ $post['title'] }}</h2>
                 <h4>{{ $post['user']['user_name'] . ' | ' .  date('F d, g:ia', strtotime($post['created_at'])) }}</h4>
                 <p>{!! (strlen($post['body'])>255) ? substr(strip_tags($post['body']), 0, 255) : strip_tags($post['body']) !!}</p>

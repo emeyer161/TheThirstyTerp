@@ -94,6 +94,7 @@
 			selector:'textarea',
 			menubar: 'false',
 			plugins: "link",
+			default_link_target: "_blank",
 			body_class: 'form-control'
 		});
 
