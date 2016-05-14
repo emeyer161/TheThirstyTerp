@@ -29,5 +29,7 @@
 
 	<hr>
 
-	<p>{!! $post['body'] !!}</p>
+	<div style='overflow-wrap: break-word; word-wrap: break-word;'>
+		{!! $post['body'] !!}
+	</div>
 </div>

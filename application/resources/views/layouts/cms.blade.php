@@ -12,19 +12,25 @@
     </head>
 
     <body id="app-layout">
-        @include('resource.header')
         <div class="container">
-            @include('cms.sidebar')
-            <div class="col-xs-12 col-sm-9">
-                <div class="jumbotron">
-                    <h1>@yield('title')</h1>
-                    <p>@yield('blurb')</p>
-                    @yield('link')
+            @include('resource.header')
+            
+            <div class='row'>
+                <div class="col-xs-12 col-sm-3 sidebar-offcanvas" id="sidebar">
+                    @include('cms.sidebar')
                 </div>
-                @yield('content')
-            </div><!--/.col-xs-12.col-sm-9-->
+                <div class="col-xs-12 col-sm-9">
+                    <div class="jumbotron">
+                        <h1>@yield('title')</h1>
+                        <p>@yield('blurb')</p>
+                        @yield('link')
+                    </div>
+                    @yield('content')
+                </div>
+            </div>
+
+            @include('resource.footer')
         </div><!--/.container-->
-        @include('resource.footer')
 
         @yield('javascript')
     </body>

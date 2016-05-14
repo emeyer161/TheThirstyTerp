@@ -15,15 +15,22 @@
     </head>
 
     <body id="app-layout">
-        @include('resource.header')
-        
         <div class="container">
-            @yield('content')
+            @include('resource.header')
+
+            <div class="row">
+                <div class="col-sm-9 col-xs-12">
+                    @yield('content')
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    @include('client.sidebar')
+                </div>
+            </div>
+
+            @include('resource.footer')
+        
         </div>
 
-        @include('resource.footer')
-        
         @yield('javascript')
     </body>
-
 </html>

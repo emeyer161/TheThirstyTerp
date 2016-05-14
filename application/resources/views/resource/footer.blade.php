@@ -1,9 +1,14 @@
-<footer>
-	<div class="container">
+<div class='row'>
+	<footer style="text-align:center; margin-top:20px">
 		<hr>
-		<p>&copy; Copyright 2016 | The Thirsty Terp | All Rights Reserved</p>
-	</div>
-</footer>
+		<div class="col-sm-6 col-xs-12">
+			<p>&copy; Copyright 2016 | The Thirsty Terp | All Rights Reserved</p>
+		</div>
+		<div class="col-sm-6 col-xs-12">
+			<p>Developed by <a href="http://emeyer161.github.io" target="_blank" rel="nofollow">Eric J. Meyer</a></p>
+		</div>
+	</footer>
+</div>
 
 <script src='/js/all.js'></script>
 <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>

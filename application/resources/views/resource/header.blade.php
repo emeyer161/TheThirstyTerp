@@ -6,7 +6,7 @@
     </style>
 @stop
 
-<div class="container">
+<div class='row'>
     <div id="titleBar" style="height:100px; position: relative; z-index: 10; background-image:url('/img/emptyLogo.jpg'); background-size:contain; background-repeat:repeat-x">
         <img src="/img/mainLogo.png" style="position:relative; display:block; margin:auto; top:10%; height:80%; width:auto;">
     </div>

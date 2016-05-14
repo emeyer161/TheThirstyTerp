@@ -1,34 +1,30 @@
 <tr>
     <td>
-        <a class="div-link" href={{ action(($cms ?'Cms' :'Client').'\PostsController@show', ['slug' => $post['slug']]) }} role="button">
+        <a class="div-link" style="display:block" href={{ action(($cms ?'Cms' :'Client').'\PostsController@show', ['slug' => $post['slug']]) }} role="button">
             <div class='col-sm-3 col-xs-12'>
-                <img src={{"/img/posts/".$post['slug'].".png"}} style="max-width:100%"/>
+                <img src={{"/img/posts/".$post['slug'].".png"}} style="width:100%"/>
             </div>
             <div class='col-sm-9 col-xs-12'>
-                <h2>{{ $post['title'] }}</h2>
+                <h2>
+                    {{ $post['title'] }}
+                </h2>
                 <h4>{{ $post['user']['user_name'] . ' | ' .  date('F d, g:ia', strtotime($post['created_at'])) }}</h4>
-                <p style='overflow-wrap: break-word; word-wrap: break-word;'>
-                    {!! (strlen($post['body'])>255) ? substr(strip_tags($post['body']), 0, 255) : strip_tags($post['body']) !!}
-                </p>
+                @if ($cms == true)
+                    <div style="display:block">
+                        @can('features')
+                            <a href={{ action('Cms\FeaturesController@featurePost', ['slug' => $post['slug']]) }} role="button"><button class="btn btn-warning btn-large"><span class="glyphicon glyphicon-star"></button></a>
+                        @endcan
+                        @can('change-post', $post['id'])
+                            <a href={{ action('Cms\PostsController@edit', ['slug' => $post['slug']]) }} role="button"><button class="btn btn-default btn-large"><span class="glyphicon glyphicon-pencil"></button></a>
+                           @include('resource.delete-button', array('url' => action('Cms\PostsController@delete', ['id' => $post['id']]) ))
+                        @endcan
+                    </div>
+                @else
+                    <p style='overflow-wrap: break-word; word-wrap: break-word;'>
+                        {!! (strlen($post['body'])>255) ? substr(strip_tags($post['body']), 0, 255) : strip_tags($post['body']) !!}
+                    </p>
+                @endif
             </div>
         </a>
     </td>
-    @if ($cms == true)
-        <td class="rowlink-skip">
-            @can('features')
-                <a class="btn btn-warning btn-large" href={{ action('Cms\FeaturesController@featurePost', ['slug' => $post['slug']]) }} role="button"><span class="glyphicon glyphicon-star"></a>
-            @endcan
-        </td>
-        @can('change-post', $post['id'])
-            <td class="rowlink-skip">
-                <a class="btn btn-default btn-large" href={{ action('Cms\PostsController@edit', ['slug' => $post['slug']]) }} role="button">Edit Post &raquo;</a>
-            </td>
-            <td class="rowlink-skip">
-               @include('resource.delete-button', array('url' => action('Cms\PostsController@delete', ['id' => $post['id']]) ))
-            </td>
-        @else
-            <td></td>
-            <td></td>
-        @endcan
-    @endif
 </tr>
