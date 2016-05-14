@@ -48,6 +48,7 @@
 
 					<fieldset class="form-group">
 						<label for="image">Upload Image</label>
+						<small class="text-muted">.jpg .png or .gif</small>
 						<input type="file" class="form-control" name="image" id="image">
 						<small class="text-muted">This will replace any previous image.</small>
 					</fieldset>

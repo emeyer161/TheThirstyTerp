@@ -66,11 +66,14 @@
 
 					<fieldset class="form-group">
 						<label for="image">Image</label>
+						<small class="text-muted">.jpg .png or .gif</small>
 						<input type="file" class="form-control" name="image" id="image">
+						<small class="text-muted">This will replace any previous image.</small>
 					</fieldset>
 
 					<fieldset class="form-group">
 					    <label for="body">Body</label>
+					    <small class="text-muted">Pasting content may cause formatting issues.</small>
 					    <textarea class="form-control" name="body" id="body" rows="20">{!! $prefill['body'] !!}</textarea>
 					</fieldset>
 

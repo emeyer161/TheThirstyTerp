@@ -143,8 +143,8 @@ class PostsController extends Controller
             ->withInput();
         }
 
-        $this->makeImage($request, $post);
         $post = $this->postRepo->update( $request->all(), $slug );
+        $this->makeImage($request, $post);
 
     	return redirect(action('Cms\PostsController@show', ['slug' => $post['slug']]))
             ->with('message', 'Update Successful');
@@ -187,7 +187,15 @@ class PostsController extends Controller
             $image  = $request->file('image');
             Image::make($image->getRealPath())->encode('png')->save($path);
         } else if($post->video_id && !File::exists(public_path('img/posts/'.$post['slug'].'.png'))){
-            Image::make('http://img.youtube.com/vi/'.$post['video_id'].'/0.jpg')->encode('png')->save($path);
+            try{
+                Image::make('http://img.youtube.com/vi/'.$post['video_id'].'/0.jpg')->encode('png')->save($path);
+            } catch (\Exception $e) {
+                return redirect(action('Cms\PostsController@edit', [
+                    'slug' => $post['slug'],
+                ]))
+                ->withErrors(array('video_id' => 'Invalid Video ID'))
+                ->withInput();
+            }
         }
     }
 }
