@@ -93,6 +93,7 @@
 		tinymce.init({ 
 			selector:'textarea',
 			menubar: 'false',
+			plugins: "link",
 			body_class: 'form-control'
 		});
 
