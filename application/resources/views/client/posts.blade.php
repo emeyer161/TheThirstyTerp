@@ -60,7 +60,7 @@
             </a>
         </div>
 
-        <table class="table table-hover table-sm table-striped">
+        <table class="table table-hover table-sm table-striped" style="table-layout:fixed">
             <thead>
               <tr>
                 <th>Posts</th>
