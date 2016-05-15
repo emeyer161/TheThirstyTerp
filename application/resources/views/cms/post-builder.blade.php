@@ -93,7 +93,14 @@
 		tinymce.init({ 
 			selector:'textarea',
 			menubar: 'false',
-			plugins: "link spellchecker media",
+			plugins: "link spellchecker media paste",
+			paste_text_sticky: true,
+			paste_as_text: true,
+			// setup: function(ed) {
+			//     ed.onInit.add(function(ed) {
+			// 		ed.pasteAsPlainText = true;
+			//     });
+			// },
 			default_link_target: "_blank",
 			body_class: 'form-control'
 		});
