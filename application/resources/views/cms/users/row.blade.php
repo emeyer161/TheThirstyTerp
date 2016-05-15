@@ -8,7 +8,9 @@
                 <div class="input-group">
                     <select class="c-select form-control" name="role_id">
                         @foreach($roles as $role)
-                            <option {{$user->role->name == $role['name'] ?'selected' :null}} value="{{$role['id']}}">{{$role['name']}}</option>
+                            @if($role['name'] != "SuperAdmin")
+                                <option {{$user->role->name == $role['name'] ?'selected' :null}} value="{{$role['id']}}">{{$role['name']}}</option>
+                            @endif
                         @endforeach
                     </select>
                     <span class="input-group-btn">
