@@ -3,7 +3,7 @@
 
 	<p>{{ $comment['body'] }}</p>
     
-    @if($comment->user->id == Auth::user()->id)
+    @if($comment->user->id == \Auth::user()->id)
 		@include('resource.delete-button', array('url' => action('Client\CommentsController@destroy', ['id' => $comment->id]) ))
     @endif
 </div>

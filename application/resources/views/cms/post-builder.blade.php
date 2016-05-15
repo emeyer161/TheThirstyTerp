@@ -93,7 +93,7 @@
 		tinymce.init({ 
 			selector:'textarea',
 			menubar: 'false',
-			plugins: "link spellchecker",
+			plugins: "link spellchecker media",
 			default_link_target: "_blank",
 			body_class: 'form-control'
 		});
