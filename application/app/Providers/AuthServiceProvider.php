@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         $gate->before(function ($user, $ability) {
-            if (!$user->cmsEntry()){
+            if (!$user->cmsEntry() && ($ability != 'delete-comment')){
                 return false;
             } else if ($user->is('SuperAdmin') && ($ability != 'change-user')) {
                 return true;
