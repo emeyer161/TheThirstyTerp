@@ -3,8 +3,8 @@
 
 	<p>{{ $comment['body'] }}</p>
     
-    @if($comment->user->id == \Auth::user()->id)
+    @can('delete-comment', $comment)
 		@include('resource.delete-button', array('url' => action('Client\CommentsController@destroy', ['id' => $comment->id]) ))
-    @endif
+    @endcan
 </div>
 <hr>

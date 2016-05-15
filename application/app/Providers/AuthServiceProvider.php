@@ -58,5 +58,9 @@ class AuthServiceProvider extends ServiceProvider
             }
             return $user->is('Admin');
         });
+
+        $gate->define('delete-comment', function($user, $comment) {
+            return $user->id == $comment->user->id;
+        });
     }
 }
