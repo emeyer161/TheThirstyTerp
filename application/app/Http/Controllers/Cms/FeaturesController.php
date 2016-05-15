@@ -90,18 +90,7 @@ class FeaturesController extends Controller
         }
 
         $feature = $this->featureRepo->create( $request->all() );
-
-        $relativePath   = 'img/features/'.$feature->id.'.png';
-        if($request->file('image')){
-            Image::make( $request->file('image')->getRealPath() )
-                ->encode('png')->save(public_path($relativePath));
-        } elseif ($feature->post_id){
-            $relativePath = 'img/posts/'.$feature->post->slug.'.png';
-        } else {
-            $relativePath = '';
-        }
-        $feature->img_filename = $relativePath;
-        $feature->save();
+        $this->makeImage($request, $feature);
 
         return redirect(action('Cms\FeaturesController@index'))
             ->with('message', 'Create Successful');
@@ -149,14 +138,8 @@ class FeaturesController extends Controller
 
         if (Gate::denies('features', $feature->id)) { abort(403); }
 
-        if($request->file('image')){
-            $relativePath   = 'img/features/'.$feature['id'].'.png';
-            $image          = $request->file('image');
-            Image::make($image->getRealPath())->encode('png')->save(public_path( $relativePath));
-            $request->request->add(['img_filename' => $relativePath]);
-        }
-
         $this->featureRepo->update( $request->all(), $id );
+        $this->makeImage($request, $feature);
 
     	return redirect(action('Cms\FeaturesController@index'))
             ->with('message', 'Update Successful');
@@ -194,5 +177,20 @@ class FeaturesController extends Controller
 
         $this->featureRepo->destroy( $id );
         return redirect(action('Cms\FeaturesController@index'))->with('message', 'Delete Successful');
+    }
+
+    private function makeImage($request, $feature)
+    {
+        $featurePath    = public_path( 'img/features/'.$feature->id.'.png' );
+
+        if($request->file('image')){
+            Image::make( $request->file('image')->getRealPath() )
+                ->encode('png')->save($featurePath);
+        } elseif ($feature->post_id && !File::exists($featurePath)){
+            if (File::exists(public_path('img/posts/'.$feature->post->slug.'.png'))){
+                Image::make( public_path('img/posts/'.$feature->post->slug.'.png') )
+                    ->encode('png')->save($featurePath);
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ class Feature extends Model
      *
      * @var array
      */
-    protected $fillable = array('post_id', 'title', 'description', 'img_filename', 'link_url');
+    protected $fillable = array('post_id', 'title', 'description', 'link_url');
     
     protected $casts = [ 
         'id' => 'integer',
@@ -28,8 +28,8 @@ class Feature extends Model
         parent::boot();
 
         static::deleting(function($feature) {
-            $filename = public_path($feature->img_filename);
-            if ($feature->img_filename && File::exists($filename)){
+            $filename = public_path( 'img/features/'.$feature->id.'.png' );
+            if (File::exists($filename)){
                 unlink($filename);
             }
         });

@@ -38,7 +38,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             @foreach ($features as $i => $f)
-                <div class="slide item{{$i==0 ? ' active' : ''}}" style="background-image:url({{ $f['img_filename'] }}); background-position:center">
+                <div class="slide item{{$i==0 ? ' active' : ''}}" style="background-image:url({{ url('img/features/'.$f->id.'.png') }}); background-position:center">
                     <a href={{ $f['link_url'] }} target="{{substr( $f['link_url'], 0, 4 ) === 'http' ? '_blank' : ''}}">
                         <img style="height:100%; width:100%"}}>
                         <div class="carousel-caption">

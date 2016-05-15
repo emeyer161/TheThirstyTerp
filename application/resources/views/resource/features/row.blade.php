@@ -1,7 +1,7 @@
 <tr>
     <td>
         <div class='col-xs-3'>
-            <img src={{ url('/'.$feature['img_filename']) }} style="max-width:100%"/>
+            <img src={{url( '/img/features/'.$feature->id.'.png' )}} style="max-width:100%"/>
         </div>
         <div class='col-xs-9'>
             <h2>{{ $feature['title'] }}</h2>
