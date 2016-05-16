@@ -54,7 +54,7 @@ class AuthServiceProvider extends ServiceProvider
 
         $gate->define('change-post', function ($user, $id) {
             if ($user->is('Writer')) {
-                return $user->id === Post::where('id', $id)->get()->first()->user_id;
+                return $user->id === Post::find($id)->user_id;
             }
             return $user->is('Admin');
         });

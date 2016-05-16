@@ -96,6 +96,8 @@
 			plugins: "link spellchecker media paste",
 			paste_text_sticky: true,
 			paste_as_text: true,
+			valid_elements: "[*]",
+			extended_valid_elements: "iframe[src|frameborder|style|scrolling|class|width|height|name|align]",
 			// setup: function(ed) {
 			//     ed.onInit.add(function(ed) {
 			// 		ed.pasteAsPlainText = true;
