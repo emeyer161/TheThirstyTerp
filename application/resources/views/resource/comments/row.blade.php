@@ -6,7 +6,7 @@
     @endcan
 	<h4>{{ $comment->user->user_name.' on '.date('F d, g:ia', strtotime($comment->created_at)) }}</h4>
 
-	<p>{{ $comment['body'] }}</p>
+	<p style="margin-left:15px">{{ $comment['body'] }}</p>
     
 </div>
 <hr>

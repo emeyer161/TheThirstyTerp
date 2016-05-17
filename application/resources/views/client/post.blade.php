@@ -10,12 +10,15 @@
 	
 	<hr>
 
-	<h3>Comments</h3>
-	@foreach($post->comments as $comment)
-        @include('resource.comments.row', $comment)
-    @endforeach
-	
-	@if(!Auth::guest())
-		@include('resource.comments.create', $post)
-	@endif
+	<h3 style="text-align:center; margin-bottom:30px">Comments</h3>
+
+	<div class="row">
+		@foreach($post->comments as $comment)
+	        @include('resource.comments.row', $comment)
+	    @endforeach
+		
+		@if(!Auth::guest())
+			@include('resource.comments.create', $post)
+		@endif
+	</div>
 @stop
