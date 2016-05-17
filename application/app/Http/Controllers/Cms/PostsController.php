@@ -113,7 +113,7 @@ class PostsController extends Controller
     public function edit($slug)
     {
         $post = $this->postRepo->getBySlug( $slug );
-        if (Gate::denies('update-post', $post->id)) { abort(403); }
+        if (Gate::denies('change-post', $post->id)) { abort(403); }
 
         return view('cms.post-builder', [ 'post' => $post ]);
     }
@@ -128,7 +128,7 @@ class PostsController extends Controller
     public function update(Request $request, $slug)
     {
         $post = $this->postRepo->getBySlug( $slug );
-        if (Gate::denies('update-post', $post->id)) { abort(403); }
+        if (Gate::denies('change-post', $post->id)) { abort(403); }
 
         $validator = \Validator::make($request->all(), [
             'title'    => 'required|min:1|max:255|unique:posts,title,'.$post['id'],
@@ -159,7 +159,7 @@ class PostsController extends Controller
     public function delete($id)
     {
         $post = $this->postRepo->getById( $id );
-        if (Gate::denies('destroy-post', $post)) { abort(403); }
+        if (Gate::denies('change-post', $post)) { abort(403); }
 
         $this->postRepo->delete( $post );
         return redirect(action('Cms\PostsController@index'))->with('message', 'Delete Successful');
@@ -174,7 +174,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = $this->postRepo->getById( $id );
-        if (Gate::denies('destroy-post', $post)) { abort(403); }
+        if (Gate::denies('change-post', $post)) { abort(403); }
 
         $this->postRepo->destroy( $id );
         return redirect(action('Cms\PostsController@index'))->with('message', 'Delete Successful');
