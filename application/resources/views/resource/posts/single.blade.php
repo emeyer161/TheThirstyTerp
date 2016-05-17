@@ -1,4 +1,4 @@
-<div class="blog-post">
+<div class="blog-post" style="overflow:hidden">
 	<h1 class="blog-post-title"><b>{{ $post['title'] }}</b></h1>
 	@if( in_array('Video', $post['tagsClean']) && $post['video_id'] )
 		<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
