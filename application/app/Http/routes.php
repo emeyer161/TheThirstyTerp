@@ -44,6 +44,12 @@ Route::group(['middleware' => 'web'], function () {
 
 	// Route::get('user', 'HomeController@index');
 
+	Route::group([ 'middleware' => 'auth', 'prefix' => 'profile' ], function(){
+		Route::get('/', 'Client\UsersController@getProfile');
+		Route::get('/edit', 'Client\UsersController@editProfile');
+		Route::put('/', 'Client\UsersController@updateProfile');
+	});
+
 	Route::group([ 'middleware' => 'admin', 'prefix' => 'manage' ], function(){
 		Route::get('/', function(){
 		    return view('cms.index');

@@ -44,7 +44,7 @@
                             </a>
 
                             <ul role="menu" class="dropdown-menu">
-                                <!-- <li><a href="{{ url('/user') }}"><i class="fa fa-btn"></i>Profile</a></li> -->
+                                <li><a href="{{action('Client\UsersController@editProfile')}}"><i class="fa fa-btn"></i>Edit Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

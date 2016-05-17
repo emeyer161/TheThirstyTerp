@@ -17,7 +17,7 @@ class Administration
     public function handle($request, Closure $next)
     {
         if(!Auth::guest()){
-            if ($request->user()->cmsEntry()){
+            if (Auth::user()->cmsEntry()){
                 return $next($request);
             }
         }

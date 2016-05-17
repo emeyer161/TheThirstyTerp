@@ -24,16 +24,15 @@ class UsersRepository extends Repository
         				->paginate(20);
 	}
 
-	// public function getById($id)
-	// {
-	// 	return $this->_usersWithRole()
-	// 					->where('id', $id)->get()->first();
-	// }
+	public function getById($id)
+	{
+		return User::where('id', $id)->get()->first();
+	}
 
 	public function getByIdWithPosts($id)
 	{
-		$user = User::where('id', $id)->get()->first();
-		$user->posts = $user->postsPaginated();
+		$user 			= $this->getById($id);
+		$user->posts 	= $user->postsPaginated();
 		return $user;
 	}
 

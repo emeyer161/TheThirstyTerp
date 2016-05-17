@@ -18,7 +18,7 @@
 		        @include('resource.comments.row', $comment)
 		    @endforeach
 		</div>
-		
+
 		@if(!Auth::guest())
 			@include('resource.comments.create', $post)
 		@endif
