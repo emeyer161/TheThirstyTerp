@@ -2,6 +2,10 @@
 
 @section('title', $post->title)
 
+@section('head', 
+	"<link rel='image_src' href=". url('/img/posts/'.$post->slug.'.png') ."><!--formatted-->"
+)
+
 @section('style')
 @stop
 
