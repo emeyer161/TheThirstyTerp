@@ -19,6 +19,7 @@ elixir(function(mix) {
     mix.less('app.less');
     mix.scripts([
         "jquery.min.js",
+        "jquery-ui.min.js",
         "bootstrap.min.js",
         "jasny-bootstrap.min.js",
         "tinymce.min.js",

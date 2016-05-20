@@ -2,6 +2,9 @@
 @import "bootstrap.min.css";
 @import "bootstrap-theme.min.css";
 @import "jasny-bootstrap.min.css";
+@import "jquery-ui.min.css";
+@import "jquery-ui.structure.min.css";
+@import "jquery-ui.theme.min.css";
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

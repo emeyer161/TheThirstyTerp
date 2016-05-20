@@ -8,7 +8,9 @@
                 <h2>
                     {{ $post['title'] }}
                 </h2>
-                <h4>{{ $post['user']['user_name'] . ' | ' .  date('F d, g:ia', strtotime($post['created_at'])) }}</h4>
+                <h4>{{ $post['user']['user_name'].' | '.date('F d, g:ia', strtotime($post['created_at'])).' | '.$post->comments->count().' comments' }}
+                    
+                </h4>
                 @if ($cms == true)
                     <div style="display:block">
                         @can('features')
@@ -21,7 +23,7 @@
                     </div>
                 @else
                     <p style='overflow-wrap: break-word; word-wrap: break-word;'>
-                        {!! (strlen($post['body'])>255) ? substr(strip_tags($post['body']), 0, 255) : strip_tags($post['body']) !!}
+                        {!! (strlen($post['body'])>150) ? substr(strip_tags($post['body']), 0, 255) : strip_tags($post['body']) !!}
                     </p>
                 @endif
             </div>

@@ -70,6 +70,8 @@
 						<input type="file" class="form-control" name="image" id="image">
 						<small class="text-muted">This will replace any previous image.</small>
 					</fieldset>
+					
+					<div id="dialog"></div>
 
 					<fieldset class="form-group">
 					    <label for="body">Body</label>
@@ -90,34 +92,99 @@
 
 @section('javascript')
 	<script>
-		tinymce.init({ 
-			selector:'textarea',
-			menubar: 'false',
-			plugins: "link spellchecker media paste",
-			paste_text_sticky: true,
-			paste_as_text: true,
-			// valid_elements: "[*]",
-			// extended_valid_elements: "iframe[src|frameborder|style|scrolling|class|width|height|name|align]",
-			// setup: function(ed) {
-			//     ed.onInit.add(function(ed) {
-			// 		ed.pasteAsPlainText = true;
-			//     });
-			// },
-			default_link_target: "_blank",
-			body_class: 'form-control'
+		$(document).ready(function(){
+			tinymce.init({ 
+				selector:'textarea',
+				menubar: 'false',
+				plugins: "link media paste",
+				paste_text_sticky: true,
+				paste_as_text: true,
+				browser_spellcheck: true,
+	    		contextmenu: false,
+				default_link_target: "_blank",
+				body_id: 'editor_body',
+				setup: function(ed) {
+				    ed.on('keydown', function(e) {
+				    	e.keyCode!=8 && passiveProfanity( $(ed.getContent()).text() );
+				    });
+				}
+			});
+
+			var profanity = [
+				'fuck', 'shit', 'bitch', 'slut', 'whore', 'pussy', 'dick', 'cock', 'asshole'
+			];
+
+			var offLimits = [
+				'nigger', 'faggot', 'cunt'
+			];
+
+			var responses = [
+				'Do you kiss your mother with that mouth?',
+				'Would you send this content to your grandma?',
+				'Radical word choices dude...',
+				'Well fuck you, asshole.',
+				'Chill out, maybe?',
+				'Would Barstool write that?',
+				'Calm your shit, fucker!',
+				'Be mindful of our young readers...',
+				'Shut the fuck up, bitch!',
+				'Woah there... Relax...',
+				'Cmon... Is that necessary?',
+			];
+
+			var oldCount = 0;
+			function passiveProfanity(body){
+				offLimits.map(function(word){
+					if(body.includes(word)){
+						throwDialog('Yo! No... Erase that you '+word+'.');
+						return;
+					}
+				});
+
+				if(oldCount>8){
+					throwDialog("Ok, you've had enough. Erase one.");
+					return;
+				} else {
+					var newCount = 0;
+					profanity.map(function(word){
+						if(body.includes(word)){
+							newCount += (body.split(word).length-1);
+						}
+					});
+					if(newCount > oldCount){
+						if(newCount>1){
+							throwDialog( responses[Math.ceil(Math.random()*10)] );
+						}
+					}
+					oldCount = newCount;
+				}
+			}
+
+			function throwDialog(message){
+				$('#dialog').dialog({
+			        modal: true,
+			        resizable: false,
+			        draggable: false,
+			        buttons: {
+				        'Okay' : function() {
+				            $(this).dialog('close');
+				        }
+				    }
+			    });
+				$('#dialog').text( message );    
+        		$('#dialog').dialog('open');
+			}
+
+		    $('.btn-group').button();
+		    function toggleVideo() {
+			    if ($('#Video').prop('checked')) {
+			    	$('#video-input').show();
+			    } else {
+			    	$('#video-input').hide();
+			    	$('#video_id').val('');
+			    }
+			}
 		});
-
-	    $('.btn-group').button();
-
-
-	    function toggleVideo() {
-		    if ($('#Video').prop('checked')) {
-		    	$('#video-input').show();
-		    } else {
-		    	$('#video-input').hide();
-		    	$('#video_id').val('');
-		    }
-		}
 	</script>
 @stop
 
