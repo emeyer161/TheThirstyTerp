@@ -71,7 +71,7 @@
 						<small class="text-muted">This will replace any previous image.</small>
 					</fieldset>
 					
-					<div id="dialog"></div>
+					<div id="dialog" data-rel="dialog" style="background:white"></div>
 
 					<fieldset class="form-group">
 					    <label for="body">Body</label>
@@ -141,20 +141,18 @@
 					}
 				});
 
-				if(oldCount>8){
+				var newCount = 0;
+				profanity.map(function(word){
+					if(body.includes(word)){
+						newCount += (body.split(word).length-1);
+					}
+				});
+
+				if(newCount>8){
 					throwDialog("Ok, you've had enough. Erase one.");
-					return;
-				} else {
-					var newCount = 0;
-					profanity.map(function(word){
-						if(body.includes(word)){
-							newCount += (body.split(word).length-1);
-						}
-					});
-					if(newCount > oldCount){
-						if(newCount>1){
-							throwDialog( responses[Math.ceil(Math.random()*10)] );
-						}
+				} else if(newCount != oldCount){
+					if(newCount>oldCount && newCount>1){
+						throwDialog( responses[Math.ceil(Math.random()*10)] );
 					}
 					oldCount = newCount;
 				}
@@ -163,6 +161,7 @@
 			function throwDialog(message){
 				$('#dialog').dialog({
 			        modal: true,
+			        width:'300px',
 			        resizable: false,
 			        draggable: false,
 			        buttons: {
