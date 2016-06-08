@@ -15,6 +15,7 @@
     </head>
 
     <body id="app-layout">
+        @include('resource.analyticstracking')
         <div class="container">
             @include('resource.header')
 
