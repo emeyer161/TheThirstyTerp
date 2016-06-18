@@ -35,7 +35,7 @@
         {{-- <a title="Real Time Web Analytics" href="http://clicky.com/100965820"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a> --}}
         <script src="//static.getclicky.com/js" type="text/javascript"></script>
         <script type="text/javascript">try{ clicky.init(100965820); }catch(e){}</script>
-        {{-- <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100965820ns.gif" /></p></noscript> --}}
+        <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100965820ns.gif" /></p></noscript>
         @yield('javascript')
     </body>
 </html>
