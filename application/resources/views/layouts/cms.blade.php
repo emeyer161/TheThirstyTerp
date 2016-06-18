@@ -33,6 +33,7 @@
         </div><!--/.container-->
 
         @yield('javascript')
+
     </body>
 
 </html>
