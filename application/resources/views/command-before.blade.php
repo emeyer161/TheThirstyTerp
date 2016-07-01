@@ -1,0 +1,1 @@
+Your command will be run in just a second for {{ $date }}. Hope it works well for you!
