@@ -1,7 +1,7 @@
 @extends('layouts.cms')
 
 @section('title', 'Posts')
-@section('blurb', 'View: '.$post['title'] ) 
+@section('blurb', '<b>View:</b> '.$post['title'].'<br> <b>Page Views:</b> '.$post->page_views ) 
 @section('link')
     @can('features')
         <a class="btn btn-warning btn-large" href={{ action('Cms\FeaturesController@featurePost', ['slug' => $post['slug']]) }} role="button"><span class="glyphicon glyphicon-star"></a>
