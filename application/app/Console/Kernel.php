@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Inspire::class,
-        Commands\FetchAnalytics::class,
+        'App\Console\Commands\FetchAnalytics',
+        'App\Console\Commands\GetInitialAnalytics',
     ];
 
     /**
@@ -25,7 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('analytics:fetch')
-                 ->daily();
+        $schedule->command('analytics:fetch')->daily();
     }
 }
